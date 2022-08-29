@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_031932) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_29_032620) do
+  create_table "attended_subjects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "period"
+    t.integer "grade"
+    t.bigint "subject_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_attended_subjects_on_student_id"
+    t.index ["subject_id"], name: "index_attended_subjects_on_subject_id"
+  end
+
   create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,5 +34,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_031932) do
     t.index ["course_id"], name: "index_students_on_course_id"
   end
 
+  create_table "subjects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "attended_subjects", "students"
+  add_foreign_key "attended_subjects", "subjects"
   add_foreign_key "students", "courses"
 end
