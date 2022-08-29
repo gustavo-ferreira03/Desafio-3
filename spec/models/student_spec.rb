@@ -9,7 +9,7 @@ RSpec.describe Student, type: :model do
   end
 
   describe "#cr" do
-    it "returns an integer" do
+    it "returns the student's cr" do
       expect(subject.cr).to be_kind_of(Integer)
     end
   end
