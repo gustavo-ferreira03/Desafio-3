@@ -5,9 +5,12 @@ class Student < ApplicationRecord
 
   def cr
     sum = 0
+    total_hours = 0
     attended_subjects.each do |attended_subject|
-      sum += attended_subject.grade
+      hours = attended_subject.subject.hours
+      sum += attended_subject.grade * hours
+      total_hours += hours
     end
-    sum / attended_subjects.count
+    sum / total_hours
   end
 end

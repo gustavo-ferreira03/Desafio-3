@@ -1,0 +1,42 @@
+<h1 class="text-center">Desafio 3</h1>
+
+<div>
+    <h2 class="text-center">Alunos</h2>
+    <div class="container-md">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Matrícula</th>
+                    <th>CR</th>
+                <tr>
+            </thead>
+            <tbody>
+                <% @students.each do |student| %>
+                <tr>
+                    <td> <%= link_to student.id, student %> </td>
+                    <td> <%= student.cr %> </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <h2 class="text-center">Cursos</h2>
+    <div class="container-md">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>CR</th>
+                <tr>
+            </thead>
+            <tbody>
+                <% @courses.each do |course| %>
+                <tr>
+                    <td> <%= course.id %> </td>
+                    <td> <%= course.average_cr %> </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

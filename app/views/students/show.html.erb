@@ -1,0 +1,29 @@
+<div>
+    <h1 class="text-center">Aluno <%= @student.id %></h1>
+    <p class="text-center">CR: <%= @student.cr %>
+    <hr>
+</div>
+
+<h2 class="text-center">Disciplinas cursadas</h2>
+<div class="container-md">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Carga horária</th>
+                <th>Período</th>
+                <th>Nota</th>
+            <tr>
+        </thead>
+        <tbody>
+            <% @student.attended_subjects.each do |attended_subject| %>
+            <tr>
+                <td> <%= attended_subject.subject.code %> </td>
+                <td> <%= attended_subject.subject.hours %> </td>
+                <td> <%= attended_subject.period %> </td>
+                <td> <%= attended_subject.grade %> </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

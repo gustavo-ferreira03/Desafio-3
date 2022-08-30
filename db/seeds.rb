@@ -16,7 +16,7 @@ csv = CSV.foreach(Rails.root.join('lib', 'seeds', 'notas.csv'), headers: true) d
     end
     if !Subject.find_by(code: t["COD_DISCIPLINA"])
         puts "Creating subject #{t["COD_DISCIPLINA"]}"
-        subject = Subject.create(code: t["COD_DISCIPLINA"])
+        subject = Subject.create(code: t["COD_DISCIPLINA"], hours: t["CARGA_HORARIA"].to_i)
     end
 
     puts "Creating attended subject(#{t["COD_DISCIPLINA"]}) for student #{t["MATRICULA"]} | grade: #{t["NOTA"]} | period: #{t["ANO_SEMESTRE"]}"
